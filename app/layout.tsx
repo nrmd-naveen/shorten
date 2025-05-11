@@ -37,7 +37,7 @@ export default function RootLayout({
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full bg-[url('/noise.svg')] opacity-[0.05]" />
         <div className="absolute -top-28 -right-28 w-80 h-80 bg-green-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-56 w-96 h-96 bg-green-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 md:left-56 w-96 h-96 bg-green-500/10 rounded-full blur-3xl" />
       </div>
 
       {/* Header */}

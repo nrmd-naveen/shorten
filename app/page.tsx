@@ -33,7 +33,7 @@ export default function Home() {
                   </div>
                   <div className="flex-1 bg-white/5 rounded-md py-1.5 px-3 text-sm text-gray-300 flex items-center">
                     <span className="text-green-400 font-medium tracking-wide">nrmd.site/</span>
-                    <span className="ml-1 opacity-70">youtube.com/watch?v=dQw4w9WgXcQ</span>
+                    <span className="ml-1 opacity-70 line-clamp-1 text-left">youtube.com/watch?v=dQw4w9WgXcQ</span>
                   </div>
                 </div>
                 <div className="space-y-3">
