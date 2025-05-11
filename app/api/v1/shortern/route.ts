@@ -14,7 +14,7 @@ const getNewKeyword = (keyword: string) => {
 export const GET = async (req: NextRequest) => {
     const urlTerms = ["http://", "https://", "www."];
     const { searchParams } = new URL(req.url);
-    console.log("URL", req.url)
+    // console.log("URL", req.url)
     const shortId = searchParams.get("shortId")|| "gpt";
 
     try {
@@ -46,7 +46,7 @@ export const POST = async (req: NextRequest) => {
     const body = await req.json();  
     const url = body.url?.trim();
     const keyword = body.keyword?.trim();
-    console.log(url,"------------",keyword)
+    // console.log(url,"------------",keyword)
     
     if (!url || !keyword) {
         return NextResponse.json({

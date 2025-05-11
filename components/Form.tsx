@@ -1,11 +1,9 @@
 "use client";
 import { get } from "http";
 import { useRef, useState } from "react";
-import { Copy, LinkIcon, CheckCircle, ArrowRight, Zap } from "lucide-react";
+import { Copy, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { cn } from "@/lib/utils"
 
 type arg = string | undefined
 export default function Form({ receivedUrl }: { receivedUrl?: arg }) {
@@ -20,6 +18,8 @@ export default function Form({ receivedUrl }: { receivedUrl?: arg }) {
         setIsSubmitting(true)
         const id = await getShortUrl(url, keyword)
         setShortUrl(`http://localhost:3000/${id}`) // need to change domain
+
+
         setIsSubmitting(false)
     }
 
@@ -47,7 +47,7 @@ export default function Form({ receivedUrl }: { receivedUrl?: arg }) {
       }),
     });
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data.shortId;
     };
     
@@ -55,15 +55,15 @@ export default function Form({ receivedUrl }: { receivedUrl?: arg }) {
     const keywordRef = useRef<HTMLInputElement>(null);
 
     return (
-        <div className=" w-full max-w-2xl mx-auto backdrop-blur-md bg-black/30 rounded-xl border border-white/10 p-6 shadow-xl animate-fade-in">
+        <div className="my-[3%] w-full max-w-2xl mx-auto backdrop-blur-md bg-black/20 rounded-xl border border-white/10 p-6 shadow-xl animate-fade-in">
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                <label htmlFor="url" className="block text-sm font-medium text-gray-300 mb-1 text-left">
+                <label htmlFor="url" className="block text-md font-medium text-gray-300 mb-1 text-left">
                     Enter your long URL
                 </label>
                 <Input
                     id="url"
-                    type="url"
+                    type="text"
                     placeholder="https://example.com/very-long-url"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
@@ -72,12 +72,12 @@ export default function Form({ receivedUrl }: { receivedUrl?: arg }) {
                 />
                 </div>
                 <div>
-                <label htmlFor="keyword" className="block text-sm font-medium text-gray-300 mb-1 text-left">
+                <label htmlFor="keyword" className="block text-md font-medium text-gray-300 mb-1 text-left">
                     Custom keyword (optional)
                 </label>
                 <div className="flex">
-                    <span className="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-white/10 bg-white/5 text-gray-300 text-sm">
-                    shortly.com/
+                    <span className="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-white/10 bg-white/5 text-gray-200 font-medium tracking-wider text-md">
+                    nrmd.site/
                     </span>
                     <Input
                     id="keyword"
@@ -91,7 +91,7 @@ export default function Form({ receivedUrl }: { receivedUrl?: arg }) {
                 <Button
                 type="submit"
                 disabled={isSubmitting || !url}
-                className="w-full bg-green-500 hover:bg-green-600 text-black font-medium h-12 rounded-lg transition-all duration-200"
+                className="w-full bg-green-500 hover:bg-green-600 text-md text-black font-bold h-12 rounded-lg transition-all duration-200"
                 >
                 {isSubmitting ? (
                     <div className="h-5 w-5 rounded-full border-2 border-black border-t-transparent animate-spin" />
@@ -138,7 +138,7 @@ export default function Form({ receivedUrl }: { receivedUrl?: arg }) {
 
 //             <form onSubmit={handleSubmit} className="space-y-5">
 //               <div className="space-y-2">
-//                 <Label htmlFor="url" className="text-sm font-medium">
+//                 <Label htmlFor="url" className="text-md font-medium">
 //                   Enter Full URL
 //                 </Label>
 //                 <div className="relative">
