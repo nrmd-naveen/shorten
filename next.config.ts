@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
 
 module.exports = {
   image: {
-    domains: ['appxcontent.kaxa.in', '100x-b-mcdn.akamai.net.in']
+    domains: []
   }
 }
 export default nextConfig;

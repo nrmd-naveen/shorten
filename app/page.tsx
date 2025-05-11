@@ -1,33 +1,14 @@
 "use client";
 
 import Form from "@/components/Form";
-import { get } from "http";
-import { signIn, signOut, useSession } from "next-auth/react";
 import React from "react";
-import Link from "next/link"
-import { ArrowRight, ChevronDown, Copy, ExternalLink, Github, Link2, Zap } from "lucide-react"
+import { ArrowRight, ChevronDown, Copy, ExternalLink, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { redirect } from "next/navigation";
 
 export default function Home() {
   const [showForm, setShowForm] = React.useState(false);
-  const [shortId, setShortId] = React.useState(null);
 
-  const getShortUrl = async () => {
-    const response = await fetch("/api/v1/shortern", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        url: "https://www.google.com",
-        keyword: "google",
-      }),
-    });
-    const data = await response.json();
-    setShortId(data.shortId);
-  };
   return (
     <>
       {/* Hero Section */}
@@ -38,7 +19,7 @@ export default function Home() {
               Now Shortening Links is as Easy as Typing <span className="text-green-400">Nrmd.site</span>
             </h1>
             <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto py-2">
-              Wherever you are — just add <span className="text-green-300 tracking-wide">' nrmd.site/ '</span> before any link and press Enter.
+              Wherever you are — just add <span className="text-green-300 tracking-wide"> &apos; nrmd.site/ &apos;</span> before any link and press Enter.
             </p>
 
             {/* Visual Representation */}
@@ -66,7 +47,7 @@ export default function Home() {
                     <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
                       2
                     </div>
-                    <p className="text-sm text-gray-300">Press Enter and we'll instantly create a short link</p>
+                    <p className="text-sm text-gray-300">Press Enter and we&apos;ll instantly create a short link</p>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">

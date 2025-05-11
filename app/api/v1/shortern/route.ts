@@ -12,7 +12,6 @@ const getNewKeyword = (keyword: string) => {
 }
 
 export const GET = async (req: NextRequest) => {
-    const urlTerms = ["http://", "https://", "www."];
     const { searchParams } = new URL(req.url);
     // console.log("URL", req.url)
     const shortId = searchParams.get("shortId")|| "gpt";

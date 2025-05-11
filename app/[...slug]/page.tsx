@@ -2,13 +2,14 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import Form from "@/components/Form";
 
-type Props = {
-  params: { slug: string[] };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+// type Props = {
+//   params: { slug: string[] };
+//   searchParams: { [key: string]: string | string[] | undefined };
+// };
 
-export default async function RedirectPage({ params, searchParams }: Props) {
-  const { slug } = await params; 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function RedirectPage({ params, searchParams, }: { params: any; searchParams: any; }) {
+  const { slug } = params; 
   // console.log(slug);
   let isUrl = false;
   
@@ -25,8 +26,7 @@ export default async function RedirectPage({ params, searchParams }: Props) {
     const rawSlug = slug?.join("/") ?? ""; // reconstruct full path
     const baseUrl = decodeURIComponent(rawSlug);
     const queries = await searchParams;
-    //@ts-ignore
-    const queryString = new URLSearchParams(queries).toString();
+    const queryString = new URLSearchParams(queries as Record<string, string>).toString();
     const fullUrl = queryString ? `${baseUrl}?${queryString}` : baseUrl;
     
     return (

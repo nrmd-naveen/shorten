@@ -1,6 +1,5 @@
 "use client";
-import { get } from "http";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Copy, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -50,9 +49,6 @@ export default function Form({ receivedUrl }: { receivedUrl?: arg }) {
     // console.log(data);
     return data.shortId;
     };
-    
-    const urlRef = useRef<HTMLInputElement>(null);
-    const keywordRef = useRef<HTMLInputElement>(null);
 
     return (
         <div className="my-[3%] w-full max-w-2xl mx-auto backdrop-blur-md bg-black/20 rounded-xl border border-white/10 p-6 shadow-xl animate-fade-in">
