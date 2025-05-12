@@ -16,8 +16,7 @@ export default function Form({ receivedUrl }: { receivedUrl?: arg }) {
         e.preventDefault()
         setIsSubmitting(true)
         const id = await getShortUrl(url, keyword)
-        setShortUrl(`http://localhost:3000/${id}`) // need to change domain
-
+        setShortUrl(`http://nrmd.site/${id}`)
 
         setIsSubmitting(false)
     }
