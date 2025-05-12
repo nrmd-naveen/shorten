@@ -34,6 +34,8 @@ export default function Form({ receivedUrl }: { receivedUrl?: arg }) {
 
     //Math.random().toString(36).substring(2, 8)}
     const getShortUrl = async (url: arg, keyword: arg) => {
+        
+    const rand_str = () => [...Array(3)].map(() => String.fromCharCode(97 + Math.random() * 26 | 0)).join('');
     const response = await fetch("/api/v1/shortern", {
       method: "POST",
       headers: {
@@ -41,7 +43,7 @@ export default function Form({ receivedUrl }: { receivedUrl?: arg }) {
       },
       body: JSON.stringify({
         url: url || "https://www.google.com",
-        keyword: keyword || "google",
+        keyword: keyword || rand_str(),
       }),
     });
     const data = await response.json();
