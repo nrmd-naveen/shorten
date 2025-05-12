@@ -44,9 +44,15 @@ export default async function RedirectPage({ params, searchParams, }: { params: 
   }
 
   // It's a shortId, lookup in DB
-  const data = await prisma.url.findFirst({
-    where: { shortId: slug[0] },
-  });
+  let data = null
+
+  try{
+    data = await prisma.url.findFirst({
+      where: { shortId: slug[0] },
+    });
+  }catch (err) {
+    console.error("Error while Getting Short Id : ",err)
+  }
   
   if (!data) {
     return (
